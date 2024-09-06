@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = CounterViewModel(numberStorage: NumberStorage(counter: 0))
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        CounterView(viewModel: viewModel)
     }
 }
 
