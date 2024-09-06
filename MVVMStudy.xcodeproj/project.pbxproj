@@ -57,13 +57,12 @@
 		AC45ABC22C8B78ED00080F6F /* MVVMStudy */ = {
 			isa = PBXGroup;
 			children = (
+				AC45ABD92C8BCC9D00080F6F /* ViewModel */,
+				AC45ABD82C8BCC9600080F6F /* View */,
 				AC45ABD12C8B79DA00080F6F /* Model */,
 				AC45ABC32C8B78ED00080F6F /* MVVMStudyApp.swift */,
-				AC45ABC52C8B78ED00080F6F /* ContentView.swift */,
 				AC45ABC72C8B78EE00080F6F /* Assets.xcassets */,
 				AC45ABC92C8B78EE00080F6F /* Preview Content */,
-				AC45ABD42C8BC0C200080F6F /* CounterView.swift */,
-				AC45ABD62C8BC33700080F6F /* CounterViewModel.swift */,
 			);
 			path = MVVMStudy;
 			sourceTree = "<group>";
@@ -82,6 +81,23 @@
 				AC45ABD22C8B7A2F00080F6F /* NumberStorage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AC45ABD82C8BCC9600080F6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC45ABC52C8B78ED00080F6F /* ContentView.swift */,
+				AC45ABD42C8BC0C200080F6F /* CounterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC45ABD92C8BCC9D00080F6F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC45ABD62C8BC33700080F6F /* CounterViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
