@@ -17,6 +17,8 @@ struct CounterView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             HStack {
                 Button(action: {
                     viewModel.decreaseCounter()
@@ -36,12 +38,15 @@ struct CounterView: View {
                 })
             }
             
+            Spacer().frame(height: 20)
+            
             Button(action: {
                 viewModel.saveCurrentNumber()
             }, label: {
                 Text("Save value")
             })
             .buttonStyle(.borderedProminent)
+            .padding(.bottom, 20)
             
             List {
                 ForEach(viewModel.savedNumbers) { numberStorage in
@@ -50,6 +55,7 @@ struct CounterView: View {
                 .onDelete(perform: viewModel.deleteSavedNumber)
             }
         }
+        .padding()
     }
 }
 
