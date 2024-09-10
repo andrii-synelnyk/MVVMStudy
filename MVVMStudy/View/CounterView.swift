@@ -47,6 +47,7 @@ struct CounterView: View {
                 ForEach(viewModel.savedNumbers) { numberStorage in
                     Text("\(numberStorage.number)")
                 }
+                .onDelete(perform: viewModel.deleteSavedNumber)
             }
         }
     }

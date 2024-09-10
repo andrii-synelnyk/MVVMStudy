@@ -49,4 +49,19 @@ class CounterViewModel: ObservableObject {
         
         fetchSavedNumbers()
     }
+    
+    func deleteSavedNumber(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let numberStorage = savedNumbers[index]
+            modelContext.delete(numberStorage)
+        }
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save after deleting: \(error)")
+        }
+        
+        fetchSavedNumbers()
+    }
 }
