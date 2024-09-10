@@ -23,18 +23,21 @@ struct CounterView: View {
                 Button(action: {
                     viewModel.decreaseCounter()
                 }, label: {
-                    Text("-")
-                        .font(.system(size: 100))
+                    Image(systemName: "minus.circle")
+                            .font(.system(size: 35))
                 })
                 
                 Text("\(viewModel.numberStorage.number)")
                     .font(.system(size: 100))
+                    .minimumScaleFactor(0.3)
+                    .lineLimit(1)
+                    .padding([.leading, .trailing], 10)
                 
                 Button(action: {
                     viewModel.increaseCounter()
                 }, label: {
-                    Text("+")
-                        .font(.system(size: 100))
+                    Image(systemName: "plus.circle")
+                            .font(.system(size: 35))
                 })
             }
             
