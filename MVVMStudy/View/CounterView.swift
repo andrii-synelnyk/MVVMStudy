@@ -11,23 +11,32 @@ struct CounterView: View {
     @ObservedObject var viewModel: CounterViewModel
     
     var body: some View {
-        HStack {
-            Button(action: {
-                viewModel.decreaseCounter()
-            }, label: {
-                Text("-")
+        VStack {
+            HStack {
+                Button(action: {
+                    viewModel.decreaseCounter()
+                }, label: {
+                    Text("-")
+                        .font(.system(size: 100))
+                })
+                
+                Text("\(viewModel.numberStorage.counter)")
                     .font(.system(size: 100))
-            })
+                
+                Button(action: {
+                    viewModel.increaseCounter()
+                }, label: {
+                    Text("+")
+                        .font(.system(size: 100))
+                })
+            }
             
-            Text("\(viewModel.numberStorage.counter)")
-                .font(.system(size: 100))
-
             Button(action: {
-                viewModel.increaseCounter()
+                
             }, label: {
-                Text("+")
-                    .font(.system(size: 100))
+                Text("Save value")
             })
+            .buttonStyle(.borderedProminent)
         }
     }
 }
