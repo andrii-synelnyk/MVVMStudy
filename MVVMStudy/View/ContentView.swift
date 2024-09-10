@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @StateObject var viewModel = CounterViewModel(numberStorage: NumberStorage(counter: 0))
+    @Environment(\.modelContext) private var modelContext: ModelContext
     
     var body: some View {
-        CounterView(viewModel: viewModel)
+        CounterView(modelContext: modelContext)
     }
 }
 

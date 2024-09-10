@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CounterView: View {
-    @ObservedObject var viewModel: CounterViewModel
+    @StateObject private var viewModel: CounterViewModel
+   
+    init(modelContext: ModelContext) {
+        _viewModel = StateObject(wrappedValue: CounterViewModel(numberStorage: NumberStorage(number: 0), modelContext: modelContext))
+    }
     
     var body: some View {
         VStack {
@@ -20,7 +25,7 @@ struct CounterView: View {
                         .font(.system(size: 100))
                 })
                 
-                Text("\(viewModel.numberStorage.counter)")
+                Text("\(viewModel.numberStorage.number)")
                     .font(.system(size: 100))
                 
                 Button(action: {
@@ -32,15 +37,19 @@ struct CounterView: View {
             }
             
             Button(action: {
-                
+                viewModel.saveCurrentNumber()
             }, label: {
                 Text("Save value")
             })
             .buttonStyle(.borderedProminent)
+            
+            List {
+                ForEach(viewModel.savedNumbers) { numberStorage in
+                    Text("\(numberStorage.number)")
+                }
+            }
         }
     }
 }
 
-#Preview {
-    CounterView(viewModel: CounterViewModel(numberStorage: NumberStorage(counter: 0)))
-}
+

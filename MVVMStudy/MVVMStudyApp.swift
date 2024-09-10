@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MVVMStudyApp: App {
@@ -13,5 +14,6 @@ struct MVVMStudyApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [NumberStorage.self]) // array initalizer is not for an array of NumberStorage objects, but just for future addition of other models
     }
 }
