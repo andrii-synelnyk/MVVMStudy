@@ -38,7 +38,7 @@ class CounterViewModel: ObservableObject {
     }
     
     func saveCurrentNumber() {
-        let numberStorageCopy: NumberStorage = NumberStorage(number: numberStorage.number)
+        let numberStorageCopy: NumberStorage = NumberStorage(number: numberStorage.number) // copy a value from the current counter to a copy object used for saving
         modelContext.insert(numberStorageCopy)
         
         do {
@@ -63,5 +63,9 @@ class CounterViewModel: ObservableObject {
         }
         
         fetchSavedNumbers()
+    }
+    
+    func handleItemTapped(_ numberStorage: NumberStorage) {
+        self.numberStorage.number = numberStorage.number
     }
 }

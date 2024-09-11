@@ -10,6 +10,7 @@ import SwiftData
 
 struct CounterView: View {
     @StateObject private var viewModel: CounterViewModel
+    @State private var showAlert = false
    
     init(modelContext: ModelContext) {
         _viewModel = StateObject(wrappedValue: CounterViewModel(numberStorage: NumberStorage(number: 0), modelContext: modelContext))
@@ -53,7 +54,9 @@ struct CounterView: View {
             
             List {
                 ForEach(viewModel.savedNumbers) { numberStorage in
-                    Text("\(numberStorage.number)")
+                    NumberRowView(numberStorage: numberStorage) {
+                        viewModel.handleItemTapped(numberStorage)
+                    }
                 }
                 .onDelete(perform: viewModel.deleteSavedNumber)
             }
