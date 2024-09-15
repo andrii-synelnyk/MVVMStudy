@@ -47,7 +47,7 @@ struct CounterView: View {
             Button(action: {
                 viewModel.saveCurrentNumber()
             }, label: {
-                Text("Save value")
+                Text("Save number")
             })
             .buttonStyle(.borderedProminent)
             .padding(.bottom, 20)
