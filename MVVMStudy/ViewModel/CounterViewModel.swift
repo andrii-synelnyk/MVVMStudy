@@ -81,7 +81,7 @@ class CounterViewModel: ObservableObject {
     }
     
     func getRandomNumber() async throws -> Int {
-        // Random.org API endpoint to get a single integer in the range -100000 to 100000
+        // Random.org API endpoint to get a single integer in the range -1000 to 1000
         let endpoint = "https://www.random.org/integers/?num=1&min=-1000&max=1000&col=1&base=10&format=plain&rnd=new"
         
         guard let url = URL(string: endpoint) else {
