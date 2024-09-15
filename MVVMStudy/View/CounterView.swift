@@ -20,26 +20,39 @@ struct CounterView: View {
         VStack {
             Spacer()
             
-            HStack {
-                Button(action: {
-                    viewModel.decreaseCounter()
-                }, label: {
-                    Image(systemName: "minus.circle")
-                            .font(.system(size: 35))
-                })
+            ZStack {
+                HStack {
+                    Button(action: {
+                        viewModel.decreaseCounter()
+                    }, label: {
+                        Image(systemName: "minus.circle")
+                                .font(.system(size: 35))
+                    })
+                    
+                    Text("\(viewModel.numberStorage.number)")
+                        .font(.system(size: 100))
+                        .minimumScaleFactor(0.3)
+                        .lineLimit(1)
+                        .padding([.leading, .trailing], 10)
+                    
+                    Button(action: {
+                        viewModel.increaseCounter()
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                                .font(.system(size: 35))
+                    })
+                }
                 
-                Text("\(viewModel.numberStorage.number)")
-                    .font(.system(size: 100))
-                    .minimumScaleFactor(0.3)
-                    .lineLimit(1)
-                    .padding([.leading, .trailing], 10)
-                
-                Button(action: {
-                    viewModel.increaseCounter()
-                }, label: {
-                    Image(systemName: "plus.circle")
-                            .font(.system(size: 35))
-                })
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        viewModel.increaseCounter()
+                    }, label: {
+                        Image(systemName: "dice")
+                                .font(.system(size: 35))
+                    })
+                }.padding()
             }
             
             Spacer().frame(height: 20)
