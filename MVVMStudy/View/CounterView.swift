@@ -29,7 +29,7 @@ struct CounterView: View {
                                 .font(.system(size: 35))
                     })
                     
-                    Text("\(viewModel.numberStorage.number)")
+                    Text("\(viewModel.numberStorage.number)") // \(viewModel.numberStorage.number)
                         .font(.system(size: 100))
                         .minimumScaleFactor(0.3)
                         .lineLimit(1)
@@ -42,6 +42,7 @@ struct CounterView: View {
                                 .font(.system(size: 35))
                     })
                 }
+                .frame(width: 250)
                 
                 HStack {
                     Spacer()
@@ -53,7 +54,7 @@ struct CounterView: View {
                                 .font(.system(size: 35))
                     })
                 }.padding()
-            }
+            }.frame(height: 120)
             
             Spacer().frame(height: 20)
             
