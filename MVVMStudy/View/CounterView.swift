@@ -53,12 +53,27 @@ struct CounterView: View {
             .padding(.bottom, 20)
             
             List {
-                ForEach(viewModel.savedNumbers) { numberStorage in
-                    NumberRowView(numberStorage: numberStorage) {
-                        viewModel.handleItemTapped(numberStorage)
+                if !viewModel.savedNumbers.isEmpty {
+                    Section(header: HStack {
+                        Spacer()
+                        Button("Clear All") {
+                            viewModel.deleteAllItems()
+                        }
+                        .padding(.trailing, -18)
+                    }.padding(.bottom, 12)) {
+                        ForEach(viewModel.savedNumbers) { numberStorage in
+                            NumberRowView(numberStorage: numberStorage) {
+                                viewModel.handleItemTapped(numberStorage)
+                            }
+                        }
+                        .onDelete(perform: viewModel.deleteSavedNumber)
                     }
+                } else {
+                    Text("No numbers saved")
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
                 }
-                .onDelete(perform: viewModel.deleteSavedNumber)
             }
         }
         .padding()

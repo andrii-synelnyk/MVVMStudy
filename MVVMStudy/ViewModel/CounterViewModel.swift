@@ -6,6 +6,7 @@
 //
 import Foundation
 import SwiftData
+import SwiftUI
 
 class CounterViewModel: ObservableObject {
     @Published var numberStorage: NumberStorage
@@ -67,5 +68,15 @@ class CounterViewModel: ObservableObject {
     
     func handleItemTapped(_ numberStorage: NumberStorage) {
         self.numberStorage.number = numberStorage.number
+    }
+    
+    func deleteAllItems() {
+        do {
+            try modelContext.delete(model: NumberStorage.self)
+        } catch {
+            print("Failed to clear all numbers: \(error)")
+        }
+        
+        fetchSavedNumbers()
     }
 }
