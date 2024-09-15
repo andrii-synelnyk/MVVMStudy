@@ -79,4 +79,37 @@ class CounterViewModel: ObservableObject {
         
         fetchSavedNumbers()
     }
+    
+    func getRandomNumber() async throws -> Int {
+        // Random.org API endpoint to get a single integer in the range -100000 to 100000
+        let endpoint = "https://www.random.org/integers/?num=1&min=-1000&max=1000&col=1&base=10&format=plain&rnd=new"
+        
+        guard let url = URL(string: endpoint) else {
+            throw APICallError.invalidURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APICallError.invalidResponse
+        }
+        
+        guard let numberString = String(data: data, encoding: .utf8), let number = Int(numberString.trimmingCharacters(in: .whitespacesAndNewlines)) else {
+            throw APICallError.invalidData
+        }
+        
+        return number
+    }
+    
+    func setRandomNumber() {
+        Task {
+            do {
+                let randomNumber = try await getRandomNumber()
+                
+                self.numberStorage.number = randomNumber
+            } catch {
+                print("Error fetching number: \(error)")
+            }
+        }
+    }
 }

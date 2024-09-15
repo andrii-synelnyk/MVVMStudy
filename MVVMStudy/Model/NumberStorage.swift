@@ -6,6 +6,8 @@
 //
 import SwiftData
 
+// a model for storing one int? really?
+
 @Model
 class NumberStorage {
     var number: Int

@@ -48,7 +48,7 @@ struct CounterView: View {
                     Spacer()
                     
                     Button(action: {
-                        viewModel.increaseCounter()
+                        viewModel.setRandomNumber()
                     }, label: {
                         Image(systemName: "dice")
                                 .font(.system(size: 35))
